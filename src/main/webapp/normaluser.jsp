@@ -4,14 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<title>About</title>
-
- <%@include file="./components/components_css_jss.jsp" %>
+<title>Insert title here</title>
 </head>
 <body>
-<%@include file="./components/Navbar.jsp" %>
-ABOUT
+
+   <h1> noraml user </h1>
 
 </body>
 </html>

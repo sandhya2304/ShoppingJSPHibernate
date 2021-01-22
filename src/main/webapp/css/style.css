@@ -1,3 +1,18 @@
 .custom-bg{
 	background: #cddc39!important;
 }
+
+.admin .card{
+	
+	border: 1px solid red;
+	
+}
+
+.admin .card:hover{
+	background-color: whitesmoke;
+	cursor: pointer;
+}
+
+/* body {
+	background-image: url('../image/back2.jpeg');
+} */

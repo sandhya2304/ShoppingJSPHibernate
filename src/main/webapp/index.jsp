@@ -10,6 +10,13 @@
  <%@include file="./components/Navbar.jsp" %>
 <h1>Session factory Object</h1>
 
+
+ <%@ include file="./components/Message.jsp" %>
+ 
+ <h1> Welcome </h1>
+ 
+
+
 <%
 
 out.println(FactoryProvider.getSessionFactory());

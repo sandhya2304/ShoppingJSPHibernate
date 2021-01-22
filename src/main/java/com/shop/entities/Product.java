@@ -18,8 +18,10 @@ public class Product
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int pid;
 	private String pName;
+	
 	@Column(length=3000)
 	private String pDesc;
+	
 	private String pPhoto;
 	private int pPrice;
 	private int pDiscount;
