@@ -23,6 +23,12 @@
   	<description></description>
   	<servlet-class>com.shop.servlets.LogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ProductOperationServlet</servlet-name>
+  	<display-name>ProductOperationServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.shop.servlets.ProductOperationServlet</servlet-class>
+  </servlet>
  
   <servlet-mapping>
   	<servlet-name>RegisterServlet</servlet-name>
@@ -35,6 +41,10 @@
   <servlet-mapping>
   	<servlet-name>LogoutServlet</servlet-name>
   	<url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProductOperationServlet</servlet-name>
+  	<url-pattern>/ProductOperationServlet</url-pattern>
   </servlet-mapping>
   
   

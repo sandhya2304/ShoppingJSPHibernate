@@ -1,3 +1,10 @@
+<%@page import="com.shop.dao.UserDao"%>
+<%@page import="com.shop.entities.Product"%>
+<%@page import="com.shop.dao.ProductDao"%>
+<%@page import="com.shop.entities.Category"%>
+<%@page import="java.util.List"%>
+<%@page import="com.shop.FactoryProvider"%>
+<%@page import="com.shop.dao.CategoryDao"%>
 <%@page import="com.shop.entities.User"%>
 
 
@@ -40,6 +47,29 @@
    
    <div class="container admin">
    
+      <div class="container-fluid mt-3">
+        <%@ include file="./components/Message.jsp" %>
+      
+      </div>
+      
+                     	<%
+							
+							CategoryDao categoryDao = new CategoryDao(FactoryProvider.getSessionFactory());
+							List<Category> list = categoryDao.allCategory();
+							
+							
+							ProductDao productDao = new ProductDao(FactoryProvider.getSessionFactory());
+							List<Product> listProduct = productDao.getAllProducts();
+							
+							
+							UserDao userDao = new UserDao(FactoryProvider.getSessionFactory());
+							List<User> userList = userDao.getAllUsers();
+							
+							
+							%>
+							
+      
+     
  
    <!-- first row -->
         <div class="row mt-4">
@@ -58,7 +88,7 @@
                
                    <div class="card-body ">
                          
-                         <h1>7653</h1>
+                         <h1><%= userList.size() %>  </h1>
                          <h1 class="text-uppercase text-muted">Users</h1>
                    
                    </div>
@@ -84,7 +114,7 @@
                 
                      </div>
                         
-                          <h1>53</h1>
+                          <h1><%= list.size() %> </h1>
                          <h1 class="text-uppercase text-muted">Catgeories</h1>
                    
                    </div>
@@ -111,7 +141,7 @@
                 
                            </div>
                         
-                         <h1>76</h1>
+                         <h1> <%= listProduct.size() %>   </h1>
                          <h1 class="text-uppercase text-muted">Products</h1>
                    
                    </div>
@@ -159,9 +189,9 @@
              <!-- second column -->
             <div class="col-md-6">
             
-                <div class="card  text-center">
+                <div class="card"  data-toggle="modal" data-target="#add-product-modal" >
                
-                   <div class="card-body">
+                   <div class="card-body  text-center">
                    
                         <div class="container">
                   
@@ -204,7 +234,11 @@
 					</div>
 					<div class="modal-body">
 
-						<form>
+						<form action="ProductOperationServlet" method="post">
+						
+						
+						 <input type="hidden" name="operation" value="addCategory" />
+ 						
 							<div class="form-group">
 								<input
 									type="text" class="form-control" name="catTitle"
@@ -242,6 +276,132 @@
 	</div>
      
       <!-- end category modal -->
+      
+      
+      <!-- product modal -->
+      
+
+	<!-- Modal -->
+	<div class="modal fade" id="add-product-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+				
+				<!-- product form -->
+				
+					<form action="ProductOperationServlet" method="post" enctype="multipart/form-data">
+						
+						
+						 <input type="hidden" name="operation" value="addProduct" />
+ 						
+							<div class="form-group">
+								<input
+									type="text" class="form-control" name="pName"
+									placeholder="Enter product title" required />
+								
+							</div>
+							<div class="form-group">
+								<textarea style="height: 150px"
+									class="form-control" name="pDesc"
+									placeholder="Enter product description" required >
+									
+									
+									</textarea>
+								
+							</div>
+							
+							<div class="form-group">
+								<input
+									type="number" class="form-control" name="pPrice"
+									placeholder="Enter product price" required />
+								
+							</div>
+							
+							<div class="form-group">
+								<input
+									type="number" class="form-control" name="pDiscount"
+									placeholder="Enter product discount" required />
+								
+							</div>
+							
+							<div class="form-group">
+								<input
+									type="number" class="form-control" name="pQuality"
+									placeholder="Enter product Qualtiy" required />
+								
+							</div>
+							
+						
+							
+							<div class="form-group">
+							   <select name="catId" class="form-control">
+							   
+							   <%
+							   
+							
+								   
+								   for(Category cat:list)
+								   {
+							   
+							   %>
+							     
+							      <option value="<%= cat.getCategoryId() %>" > <%= cat.getCategoryTitle() %> </option>
+							      
+							      <%
+							        
+								   } 
+							      %>
+							   
+							   </select>
+							</div>
+							
+							<div class="form-group">
+							    <label for="pPic">Select Picture Of Product</label>
+							    <input type="file" id="pPic" name="pPic" required />
+							</div>
+							
+							
+							
+							<div class="container text-center">
+							  <button class="btn btn-outline-success" type="submit" class="btn btn-primary">
+							     Submit
+							  </button>
+							  <button type="button" class="btn btn-secondary" data-dismiss="modal">
+							      Close
+							   </button>
+							</div>
+						</form>
+				
+				
+				
+				<!-- end Form -->
+				
+				
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+	<!-- End product Modal -->
    
 </body>
 </html>

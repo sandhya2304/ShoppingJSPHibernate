@@ -35,6 +35,16 @@
     </ul>
     <ul class="navbar-nav ml-auto">
     
+    
+    
+				<li class="nav-item active">
+				<a class="nav-link"	href="#!">
+				     <i class="fa fa-cart-plus" style="font-size:30px;color: yellow"></i>	 
+				</a>
+				</li>
+    
+    
+    
          <%
            if(user1 == null)
            {

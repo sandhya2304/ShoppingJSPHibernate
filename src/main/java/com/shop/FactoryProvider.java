@@ -21,7 +21,7 @@ public class FactoryProvider
 			}
 			
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 		
 		return sessionFactory;

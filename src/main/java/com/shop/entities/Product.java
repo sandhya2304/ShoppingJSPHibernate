@@ -134,6 +134,22 @@ public class Product
 		return "Product [pid=" + pid + ", pName=" + pName + ", pDesc=" + pDesc + ", pPhoto=" + pPhoto + ", pPrice="
 				+ pPrice + ", pDiscount=" + pDiscount + ", pQuality=" + pQuality + ", category=" + category + "]";
 	}
+	
+	
+	//method for discount on original price
+	public int getPriceAfterApplyDiscount()
+	{
+		
+		int sum,amount;
+		
+		sum = 100 - pDiscount;
+		amount = (sum * pPrice)/100;
+		
+		
+		return amount;
+	}
+	
+	
 
 	
 	

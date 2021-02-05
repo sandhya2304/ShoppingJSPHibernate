@@ -16,3 +16,21 @@
 /* body {
 	background-image: url('../image/back2.jpeg');
 } */
+
+
+.list-group-item.active{
+	    background: #28a745 !important;
+	    border-color: #28a745 !important;
+}
+
+.discount-label{
+	font-size: 10px !important;
+	font-style: italic !important;
+	text-decoration: line-through;
+	color: white;
+}
+
+.product-card:hover{
+	background-color: whitesmoke;
+	cursor: pointer;
+}
