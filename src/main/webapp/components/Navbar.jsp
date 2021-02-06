@@ -38,8 +38,9 @@
     
     
 				<li class="nav-item active">
-				<a class="nav-link"	href="#!">
-				     <i class="fa fa-cart-plus" style="font-size:30px;color: yellow"></i>	 
+				<a class="nav-link"	href="#!" data-toggle="modal" data-target="#cart">
+				     <i class="fa fa-cart-plus" style="color: white"></i> 
+				     <span class="ml-0 cart-items" style="color: white">(0)</span> 
 				</a>
 				</li>
     

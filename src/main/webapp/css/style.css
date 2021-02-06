@@ -27,7 +27,7 @@
 	font-size: 10px !important;
 	font-style: italic !important;
 	text-decoration: line-through;
-	color: white;
+	color: white !important;
 }
 
 .product-card:hover{

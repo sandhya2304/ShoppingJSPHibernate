@@ -11,7 +11,10 @@
 </head>
 <body>
 <%@include file="./components/Navbar.jsp" %>
-ABOUT
+  
+     <h1>About Us!!</h1>
 
+
+<%@include file="./components/common_modals.jsp" %>
 </body>
 </html>

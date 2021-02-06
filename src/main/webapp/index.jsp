@@ -135,7 +135,7 @@
                                         &#8377; 
                                         <%= p.getPriceAfterApplyDiscount() %> /-
                                      </button>
-                                       <button class="btn btn-outline-primary text-white">
+                                       <button class="btn btn-primary text-white">
                                        <span class="text-secondary discount-label"> <%= p.getpDiscount() %>% off  &#8377;  <%= p.getpPrice() %>/- </span> 
                                       
                                      </button>
@@ -173,6 +173,8 @@
     </div>
  
  </div>
+ 
+   <%@include file="./components/common_modals.jsp" %>
  
 
 </body>
