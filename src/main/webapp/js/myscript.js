@@ -13,7 +13,8 @@ function add_to_cart(pid,pname,price){
 	    	products.push(product);
 	    	localStorage.setItem("cart",JSON.stringify(products));
 	    	
-	    	console.log("product is added for first time ");
+	    	//console.log("product is added for first time ");
+	    	showToast("Item is added to cart");
 	    	 	
 	     }else{
 	    	 
@@ -36,8 +37,10 @@ function add_to_cart(pid,pname,price){
 	    		})
 	    		
 	    		 localStorage.setItem("cart",JSON.stringify(pCart));
-	    		console.log("product is qty is increased ");
-	    		 
+	    		//console.log("product is qty is increased ");
+	    		
+	    		showToast(oldProduct.productName+" product  qty is increased. Quantiy is :"+oldProduct.pQty); 
+	    	  
 	    	   }else{
 	    		   
 	    		   //we have to add product
@@ -45,7 +48,7 @@ function add_to_cart(pid,pname,price){
 		    		 pCart.push(product);
 		    		 localStorage.setItem("cart",JSON.stringify(pCart));
 		    		 
-		    		 console.log("product is added :) ");
+		    		 showToast("product is Added to cart");
 	    	   }
 	    	 
 	     }
@@ -72,7 +75,8 @@ function add_to_cart(pid,pname,price){
 		  console.log("Cart is empty !!");
 		  $(".cart-items").html(" ( 0 ) ");
 		  $(".cart-body").html("<h3> Cart does not have any items </h3> ");
-		  $(".checkout-btn").addClass('disabled');
+		 
+		  $(".checkout-btn").attr('disabled',true);
 	   }else {
 		   
 		   //there is something in cart
@@ -107,7 +111,7 @@ function add_to_cart(pid,pname,price){
 			        <td> ${item.pPrice} </td>
 			        <td> ${item.pQty} </td>
 			        <td> ${item.pQty*item.pPrice} </td>
-			        <td> <button class="btn btn-danger btn-sm"> Remove </button>  </td>
+			        <td> <button onClick='deleteItemFromCart(${item.productId})' class="btn btn-danger btn-sm"> Remove </button>  </td>
 			      </tr>
 	   
 			   `
@@ -121,13 +125,57 @@ function add_to_cart(pid,pname,price){
 		     <tr> <td colspan='5' class="text-right font-weight-bold m-9"> Total Price : ${totalPrice} </td> </tr>
 		   </table>`;
 		   $(".cart-body").html(table);
+		   $(".checkout-btn").attr('disabled',false);
 	   }
 	
 }
+   
+   //Remove item from Product
+   function deleteItemFromCart(pid)
+    {
+	  let cart =  JSON.parse(localStorage.getItem('cart'));
+	  let newCart  = cart.filter((item) => item.productId != pid);
+	   
+	   localStorage.setItem('cart',JSON.stringify(newCart));
+	   
+	   updateCart();
+	   
+	   showToast("Item is removed from cart!!");
+    }
+   
+   
+   /////////////////////////////////////
    
    $(document).ready(function(){
 	   updateCart();
    })
 
+   
+   //Toast message
+    
+   function showToast(content){
+	   
+	   $('#toast').addClass('display');
+	   $('#toast').html(content);
+	   setTimeout(() => {
+		   $('#toast').removeClass('display');
+	}, 2000);
+	   
+   }
+   
+   
+   
+   ////////////// checkout /////////////////
+  function goToCheckout(){
+	    window.location = "checkout.jsp";
+   }
 
 
+   
+   
+   
+   
+   
+   
+   
+   //////////////////////////////////////////

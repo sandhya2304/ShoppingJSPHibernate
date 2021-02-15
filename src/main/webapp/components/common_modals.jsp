@@ -24,8 +24,16 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary checkout-btn">Checkout </button>
+        <button type="button" class="btn btn-primary checkout-btn" onclick="goToCheckout()">
+              Checkout
+        </button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- toast msg -->
+
+<div id="toast">This is our toast</div>
+
+

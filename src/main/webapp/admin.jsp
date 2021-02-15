@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="com.shop.Helper"%>
 <%@page import="com.shop.dao.UserDao"%>
 <%@page import="com.shop.entities.Product"%>
 <%@page import="com.shop.dao.ProductDao"%>
@@ -56,6 +58,8 @@
 							
 							CategoryDao categoryDao = new CategoryDao(FactoryProvider.getSessionFactory());
 							List<Category> list = categoryDao.allCategory();
+							
+							Map<String,Long> map = Helper.getCounts(FactoryProvider.getSessionFactory());
 							
 							
 							ProductDao productDao = new ProductDao(FactoryProvider.getSessionFactory());
@@ -141,7 +145,7 @@
                 
                            </div>
                         
-                         <h1> <%= listProduct.size() %>   </h1>
+                         <h1> <%= map.get("productCount") %>   </h1>
                          <h1 class="text-uppercase text-muted">Products</h1>
                    
                    </div>
@@ -396,7 +400,7 @@
 
 
 
-
+<%@include file="./components/common_modals.jsp" %>
 
 
 
